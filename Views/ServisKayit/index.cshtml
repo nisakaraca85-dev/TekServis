@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TekServis.Models.ServisKaydi>
+
+@{
+    ViewData["Title"] = "Servis Kayıtları";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary"><i class="bi bi-tools"></i> Servis Kayıtları Yönetimi</h2>
+        <a asp-action="Create" class="btn btn-primary text-white"><i class="bi bi-plus-circle"></i> Yeni Servis Kaydı Aç</a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-hover table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Kayıt ID</th>
+                        <th>Cihaz ID</th>
+                        <th>Arıza Açıklaması</th>
+                        <th>Geliş Tarihi</th>
+                        <th>Durum</th>
+                        <th>Fiyat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var kayit in Model)
+                        {
+                            <tr>
+                                <td>@kayit.KayitID</td>
+                                <td>Cihaz #@kayit.CihazID</td>
+                                <td>@kayit.ArizaAciklamasi</td>
+                                <td>@(kayit.GelisTarihi != null ? kayit.GelisTarihi.ToString("dd.MM.yyyy") : "-")</td>
+                                <td>
+                                    <span class="badge bg-warning text-dark">@kayit.Durum</span>
+                                </td>
+                                <td>@kayit.Fiyat ₺</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Henüz açılmış bir servis kaydı bulunmuyor.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

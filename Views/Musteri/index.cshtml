@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TekServis.Models.Musteri>
+
+@{
+    ViewData["Title"] = "Müşteri Listesi";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary"><i class="bi bi-people-fill"></i> Müşteri Yönetimi</h2>
+        <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Yeni Müşteri Ekle</a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-hover table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Adı Soyadı</th>
+                        <th>Telefon</th>
+                        <th>E-Posta</th>
+                        <th>Adres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var musteri in Model)
+                        {
+                            <tr>
+                                <td>@musteri.MusteriID</td>
+                                <td><strong>@musteri.AdSoyad</strong></td>
+                                <td>@musteri.Telefon</td>
+                                <td>@musteri.Eposta</td>
+                                <td>@musteri.Adres</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">Henüz kayıtlı bir müşteri bulunmuyor.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

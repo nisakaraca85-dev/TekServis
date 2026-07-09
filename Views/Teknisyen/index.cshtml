@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TekServis.Models.Teknisyen>
+
+@{
+    ViewData["Title"] = "Teknisyen Listesi";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-info"><i class="bi bi-wrench-adjustable"></i> Teknisyen Yönetimi</h2>
+        <a asp-action="Create" class="btn btn-info text-white"><i class="bi bi-plus-circle"></i> Yeni Teknisyen Ekle</a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-hover table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Adı Soyadı</th>
+                        <th>Uzmanlık Alanı</th>
+                        <th>Telefon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var teknisyen in Model)
+                        {
+                            <tr>
+                                <td>@teknisyen.TeknisyenID</td>
+                                <td><strong>@teknisyen.AdSoyad</strong></td>
+                                <td><span class="badge bg-secondary">@teknisyen.UzmanlikAlani</span></td>
+                                <td>@teknisyen.Telefon</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">Henüz kayıtlı bir teknisyen bulunmuyor.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

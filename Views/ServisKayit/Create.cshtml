@@ -1,0 +1,60 @@
+﻿@model TekServis.Models.ServisKaydi
+
+@{
+    ViewData["Title"] = "Yeni Servis Kaydı";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-file-earmark-plus-fill"></i> Yeni Servis Kaydı Oluştur</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+
+                        <div class="mb-3">
+                            <label asp-for="CihazID" class="form-label">Cihaz ID (Eklediğin cihazın ID'si)</label>
+                            <input asp-for="CihazID" class="form-control" type="number" value="1" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TeknisyenID" class="form-label">Teknisyen ID (Eklediğin teknisyenin ID'si)</label>
+                            <input asp-for="TeknisyenID" class="form-control" type="number" value="1" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ArizaAciklamasi" class="form-label">Arıza Açıklaması</label>
+                            <textarea asp-for="ArizaAciklamasi" class="form-control" rows="2" placeholder="Cihazın şikayeti nedir?" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="GelisTarihi" class="form-label">Geliş Tarihi</label>
+                            <input asp-for="GelisTarihi" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Durum" class="form-label">Cihazın Durumu</label>
+                            <select asp-for="Durum" class="form-select">
+                                <option value="Beklemede">Beklemede / Sıra Bekliyor</option>
+                                <option value="Tamirde">Tamir Aşamasında</option>
+                                <option value="Tamamlandi">Tamir Edildi / Teslime Hazır</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Fiyat" class="form-label">Servis Ücreti (Fiyat ₺)</label>
+                            <input asp-for="Fiyat" class="form-control" type="number" step="0.01" value="0" />
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Listeye Geri Dön</a>
+                            <button type="submit" class="btn btn-primary text-white">Servis Kaydını Aç</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TekServis.Models.Cihaz>
+
+@{
+    ViewData["Title"] = "Cihaz Listesi";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-warning"><i class="bi bi-laptop"></i> Cihaz Yönetimi</h2>
+        <a asp-action="Create" class="btn btn-warning text-white"><i class="bi bi-plus-circle"></i> Yeni Cihaz Kaydet</a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-hover table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Cihaz Adı</th>
+                        <th>Marka</th>
+                        <th>Model</th>
+                        <th>Seri Numarası</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var cihaz in Model)
+                        {
+                            <tr>
+                                <td>@cihaz.CihazID</td>
+                                <td><strong>@cihaz.CihazAdi</strong></td>
+                                <td>@cihaz.Marka</td>
+                                <td>@cihaz.Model</td>
+                                <td><code class="text-dark">@cihaz.SeriNo</code></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">Henüz kayıtlı bir cihaz bulunmuyor.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

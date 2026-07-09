@@ -1,0 +1,51 @@
+﻿@model TekServis.Models.Cihaz
+
+@{
+    ViewData["Title"] = "Yeni Cihaz Ekle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-white">
+                    <h4 class="mb-0"><i class="bi bi-laptop-fill"></i> Yeni Cihaz Kaydı</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+
+                        <div class="mb-3">
+                            <label asp-for="MusteriID" class="form-label">Müşteri ID (İlk eklediğin müşterinin ID'si örn: 1)</label>
+                            <input asp-for="MusteriID" class="form-control" type="number" value="1" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CihazAdi" class="form-label">Cihaz Türü / Adı</label>
+                            <input asp-for="CihazAdi" class="form-control" placeholder="Örn: Akıllı Telefon, Laptop" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Marka" class="form-label">Marka</label>
+                            <input asp-for="Marka" class="form-control" placeholder="Örn: Apple, Asus" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Model" class="form-label">Model</label>
+                            <input asp-for="Model" class="form-control" placeholder="Örn: iPhone 13, Rog Strix" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SeriNo" class="form-label">Seri Numarası</label>
+                            <input asp-for="SeriNo" class="form-control" />
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Listeye Geri Dön</a>
+                            <button type="submit" class="btn btn-warning text-white">Cihazı Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
