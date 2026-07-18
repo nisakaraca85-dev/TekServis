@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null; // Giriş sayfasında üst menüler görünmesin diye layout'u kapatıyoruz
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>TekServis - Giriş Yap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+            body { background-color: #f8f9fa; height: 100vh; display: flex; align-items: center; justify-content: center; }
+            .login-card { width: 400px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h3 class="text-center mb-4 text-primary">TekServis Panel</h3>
+
+        @if (ViewBag.Hata != null)
+        {
+            <div class="alert alert-danger text-center">@ViewBag.Hata</div>
+        }
+
+        <form action="/Account/Login" method="POST">
+            <div class="mb-3">
+                <label class="form-label">E-posta Adresi</label>
+                <input type="email" name="eposta" class="form-control" placeholder="ornek@servis.com" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Şifre</label>
+                <input type="password" name="sifre" class="form-control" placeholder="••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-2">Giriş Yap</button>
+        </form>
+    </div>
+
+</body>
+</html>

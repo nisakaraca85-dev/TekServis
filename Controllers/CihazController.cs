@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TekServis.Data;
-using TekServis.Models;
+using TekServis.Core;
 
 namespace TekServis.Controllers
 {
-    public class CihazController : Controller
+    [YetkiKontrol("SuperAdmin")]
+    public class CihazController : BaseController
     {
         private readonly AppDbContext _context;
 

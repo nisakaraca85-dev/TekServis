@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TekServis.Data;
-using TekServis.Models;
+using TekServis.Core;
 
 namespace TekServis.Controllers
 {
-    public class MusteriController : Controller
+    [YetkiKontrol("SuperAdmin", "Admin")]
+    public class MusteriController : BaseController
     {
         private readonly AppDbContext _context;
 

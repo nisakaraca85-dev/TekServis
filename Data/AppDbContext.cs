@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TekServis.Models;
+using TekServis.Core;
 
 namespace TekServis.Data
 {
@@ -14,5 +14,7 @@ namespace TekServis.Data
         public DbSet<Cihaz> Cihazlar { get; set; }
         public DbSet<ServisKaydi> ServisKayitlari { get; set; }
         public DbSet<Teknisyen> Teknisyenler { get; set; }
+        public DbSet<Kullanici> Kullanicilar { get; set; }
+
     }
 }
